@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: medsync-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: medsync
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - medsync-network
+
+  # MinIO Object Storage
+  minio:
+    image: minio/minio:latest
+    container_name: medsync-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - medsync-network
+
+  # Redis (for Celery)
+  redis:
+    image: redis:7-alpine
+    container_name: medsync-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - medsync-network
+
+volumes:
+  mongodb_data:
+  minio_data:
+  redis_data:
+
+networks:
+  medsync-network:
+    driver: bridge

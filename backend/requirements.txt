@@ -1,0 +1,52 @@
+# Python dependencies for MedSync Backend
+
+# FastAPI
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Database
+motor==3.3.2  # MongoDB async driver
+pymongo==4.6.1
+minio==7.2.3
+
+# Authentication
+firebase-admin==6.4.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# AI/ML
+google-generativeai==0.3.2
+google-cloud-vision==3.6.0
+opencv-python==4.9.0.80
+pillow==10.2.0
+imagehash==4.3.1
+
+# Utilities
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-dateutil==2.8.2
+fuzzywuzzy==0.18.0
+python-levenshtein==0.23.0
+
+# Payment
+razorpay==1.4.1
+
+# Video (Agora)
+agora-token-builder==1.0.0
+
+# Background tasks
+celery==5.3.4
+redis==5.0.1
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.26.0
+
+# Development
+black==23.12.1
+flake8==7.0.0
+mypy==1.8.0
